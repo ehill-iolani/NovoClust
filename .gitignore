@@ -1,0 +1,3 @@
+data/*.gz
+.DS_Store
+notes.sh
