@@ -1,0 +1,16 @@
+name: cluster_analysis
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.11
+  - vsearch
+  - mafft
+  - seqkit
+  - pigz
+  - gzip
+  - chopper
+  - snakemake
+  - pip
+  - pip:
+    - biopython

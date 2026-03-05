@@ -1,0 +1,12 @@
+input_dir: data
+analysis_dir: cluster_analysis
+
+quality: 20
+minlen: 800
+maxlen: 1200
+percid: 0.95
+threshold_frac: 0.005
+
+threads:
+  vsearch: 8
+  mafft: 4
