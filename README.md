@@ -26,7 +26,6 @@ The workflow is fully reproducible using Snakemake with conda environments.
  - Structured output directories
  - Robust to singleton datasets
 
-**Workflow Diagram**
 ## Workflow diagram
 
 ```mermaid
@@ -96,15 +95,16 @@ snakemake --use-conda -F --cores 8
 ```
 
 #### Input Data
-Place all input FASTQ files in:
+Place all input FASTQ files in `/data` (you will need to make this directory):
 ```
-data/
+mkdir data
 ```
 
 Files must match:
 ```
 data/<sample>.fastq.gz
 ```
+
 Examples:
 ```
 data/sample1.fastq.gz
@@ -117,14 +117,16 @@ All configurable parameters are defined in:
 ```
 config.yaml
 ```
+
 Key parameters:
 ```
-quality: 20          # Minimum read Q-score
-minlen: 900          # Minimum read length
-maxlen: 1200         # Maximum read length
-percid: 0.99         # Clustering identity threshold
+quality: 20            # Minimum read Q-score
+minlen: 900            # Minimum read length
+maxlen: 1200           # Maximum read length
+percid: 0.99           # Clustering identity threshold
 threshold_frac: 0.005  # Minimum fraction for variant retention (0.5%)
 ```
+
 Adjust these values depending on:
  - Read quality
  - Expected amplicon length
@@ -136,20 +138,24 @@ All results are written to:
 ```
 cluster_analysis/
 ```
+
 Filtered reads (avaliable w/ `--notemp` flag)
 ```
 analysis/filt/<sample>_filtered.fastq.gz
 ```
+
 Cluster outputs (avaliable w/ `--notemp` flag)
 ```
 analysis/centroids/<sample>_centroids.99.fasta
 analysis/consensus/<sample>_consensus.99.fasta
 ```
+
 Abundance-filtered consensus (avaliable w/ `--notemp` flag)
 ```
 analysis/variants_over1pct/<sample>_consensus_over1pct.fasta
 analysis/variants_over1pct/<sample>_consensus_over1pct.abundance.tsv
 ```
+
 Final consolidated variants
 ```
 analysis/variants_over1pct/<sample>_variants.consolidated.fasta
