@@ -67,8 +67,8 @@ All bioinformatics tools are installed automatically via conda:
 
 #### Cloning the repo
 ```
-git clone <reponame>
-cd <reponame>
+git clone https://github.com/ehill-iolani/NovoClust.git
+cd NovoClust
 ```
 
 #### Setting up the local env
