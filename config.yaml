@@ -4,7 +4,7 @@ analysis_dir: cluster_analysis
 quality: 20
 minlen: 800
 maxlen: 1200
-percid: 0.95
+percid: 0.97
 threshold_frac: 0.01
 
 threads:
