@@ -3,3 +3,4 @@ data/*.gz
 notes.sh
 .snakemake
 cluster_analysis/
+compare_analysis/
