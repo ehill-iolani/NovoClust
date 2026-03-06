@@ -4,3 +4,4 @@ notes.sh
 .snakemake
 cluster_analysis/
 compare_analysis/
+testing/
