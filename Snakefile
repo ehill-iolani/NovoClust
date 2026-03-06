@@ -295,3 +295,23 @@ rule read_nseqs_summary:
         NON_CLUSTERED=$((TOTAL - CLUSTERED))
         {{ echo -e "TOTAL\tCLUSTERED\tNON_CLUSTERED"; echo -e "${{TOTAL}}\t${{CLUSTERED}}\t${{NON_CLUSTERED}}"; }} > {output.tsv}
         """
+
+# Optional rule to run compare.py for comparing samples between trials/replicates
+rule compare_samples:
+    input:
+        expand(f"{AN_DIR}/variants_over1pct/{{sample}}_variants.consolidated.fasta",
+               sample=SAMPLES)
+    output:
+        report="compare_analysis/clustered_data/clusters_with_multiple_sequences.txt"
+    log:
+        "compare_analysis/logs/compare.log"
+    conda:
+        "envs/denovo.yaml"
+    shell:
+        r"""
+        mkdir -p compare_analysis/logs
+        python scripts/compare.py \
+            cluster_analysis/variants_over1pct \
+            compare_analysis \
+            > {log} 2>&1
+        """
