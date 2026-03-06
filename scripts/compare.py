@@ -88,7 +88,6 @@ os.system(f"mafft --preservecase --auto {os.path.join(output_dir, 'combined_clea
 # end trim the alignment
 os.system(f"python scripts/endtrim_alignment.py {os.path.join(output_dir, 'aligned_data', 'aligned.fasta')} {os.path.join(output_dir, 'aligned_data', 'aligned_trimmed.fasta')}")
 
-
 # ungap the trimmed alignment
 os.system(f"python scripts/ungap_fasta.py {os.path.join(output_dir, 'aligned_data', 'aligned_trimmed.fasta')} {os.path.join(output_dir, 'aligned_data', 'aligned_trimmed_ungapped.fasta')}")
 
