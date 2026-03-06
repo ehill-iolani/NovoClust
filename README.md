@@ -167,7 +167,7 @@ analysis/variants_over1pct/<sample>_read_counts_summary.tsv
 Performs cross-sample comparison of final consolidated variants. It discovers `*consolidated.fasta` files from the primary workflow outputs and identifies identical sequences shared across samples.
 
 ```
-python3 compare.py
+snakemake compare_samples --use-conda --cores 8
 ```
 
 #### Inputs
@@ -182,7 +182,6 @@ Per-sample FASTAs with headers renamed to include the sample basename:
 ```
 compare_analysis/cleaned_data/
 ```
-
 
 All cleaned FASTAs concatenated:
 ```
