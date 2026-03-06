@@ -62,6 +62,9 @@ if not os.path.exists(os.path.join(output_dir, "aligned_data")):
 
 if not os.path.exists(os.path.join(output_dir, "clustered_data")):
     os.makedirs(os.path.join(output_dir, "clustered_data"))
+    
+if not os.path.exists(os.path.join(output_dir, "clustered_data/seq_clusters")):
+    os.makedirs(os.path.join(output_dir, "clustered_data/seq_clusters"))
 
 if not os.path.exists(os.path.join(output_dir, "combined_cleaned_data")):
     os.makedirs(os.path.join(output_dir, "combined_cleaned_data"))
@@ -116,3 +119,13 @@ with open(os.path.join(output_dir, "clustered_data", "clusters_with_multiple_seq
         output_file.write(f"Cluster {cluster_id}:\n")
         for seq_id in seq_ids:
             output_file.write(f"  {seq_id}\n")
+            
+# Write a new file for each cluster of sequences with > 1 sequence, containing the sequences in that cluster
+for cluster_id, seq_ids in clusters_with_multiple_sequences.items():
+    with open(os.path.join(output_dir, "clustered_data/seq_clusters", f"cluster_{cluster_id}.fasta"), "w") as output_file:
+        for seq_id in seq_ids:
+            # Find the sequence in the aligned fasta file
+            for record in SeqIO.parse(os.path.join(output_dir, "combined_cleaned_data", "combined.fasta"), "fasta"):
+                if record.id == seq_id:
+                    SeqIO.write(record, output_file, "fasta")
+                    break
