@@ -63,6 +63,7 @@ All bioinformatics tools are installed automatically via conda:
  - mafft
  - chopper
  - python
+ - biopython
 
 #### Cloning the repo
 ```
